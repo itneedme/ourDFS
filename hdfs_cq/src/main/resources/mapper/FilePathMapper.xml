@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.dao.FilePathMapper">
+
+    <select id="selectDir" resultType="com.cq.entity.FilePath">
+        select id, name, type, parent_id, create_time FROM file_path WHERE parent_id = #{parentId} and `status` = 0
+    </select>
+
+    <insert id="insertDir" parameterType="com.cq.entity.FilePath">
+        insert into file_path(name, type, parent_id)
+        values (#{name}, "0", #{parentId});
+    </insert>
+
+    <update id="changeDirName" parameterType="com.cq.entity.FilePath">
+        update file_path set name = #{newName} where parent_id = #{parentId} and name = #{oldName}
+    </update>
+
+    <update id="updateDirStatus">
+        update file_path set `status` = 1 where id = #{id} and `status` = 0
+    </update>
+
+    <select id="selectIdByParentId" resultType="int">
+        select id from file_path where parent_id = #{parentId} and `status` = 0
+    </select>
+
+    <insert id="insertFile" parameterType="com.cq.entity.FilePath">
+        insert into file_path(name, type, parent_id)
+        values (#{name}, "1", #{parentId});
+    </insert>
+
+    <select id="selectIdByParentIdAndName" resultType="int">
+        select id from file_path where parent_id = #{parentId} and `status` = 0 and name = #{name}
+    </select>
+
+    <select id="selectNameById" resultType="String">
+        select name from file_path where id = #{id} and `status` = 0
+    </select>
+
+    <select id="selectIdByNameAndType" resultType="com.cq.entity.FilePath">
+        select id, name, type from file_path where name = #{name} and type = #{type} and parent_id = #{parentId} and `status` = 0
+    </select>
+
+    <update id="updateStatusById">
+        update file_path set `status` = 1 where id = #{id} and `status` = 0
+    </update>
+
+    <select id="selectParentIdById" resultType="int">
+        select parent_id from file_path where id = #{id} and `status` = 0
+    </select>
+
+    <select id="selectNameByParentId" resultType="String">
+        select `name` from file_path where parent_id = #{parentId} and `status` = 0
+    </select>
+
+</mapper>

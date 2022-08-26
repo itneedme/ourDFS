@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.dao.FileMetaMapper">
+
+    <insert id="insertFileMeta" parameterType="com.cq.entity.FileMeta">
+        insert into file_meta(file_id, suffix, size, md5)
+        values (#{fileId}, #{suffix}, #{size}, #{md5})
+    </insert>
+
+    <select id="selectIdByMD5" resultType="int">
+        select id from file_meta where md5 = #{md5}
+    </select>
+
+    <select id="getIdByFileId" resultType="int">
+        select id from file_meta where status = 0 and file_id = #{fileId}
+    </select>
+
+    <update id="updateStatusByFileId">
+        update file_meta set `status` = 1 where file_id = #{fileId} and `status` = 0
+    </update>
+
+    <select id="selectIdByFileId" resultType="int">
+        select id from file_meta where file_id = #{fileId} and `status` = 0
+    </select>
+
+    <select id="selectFileIdById" resultType="int">
+        select file_id from file_meta where id = #{id} and `status` = 0
+    </select>
+
+</mapper>

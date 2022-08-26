@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.dao.FileDataInfoMapper">
+
+    <select id="selectIdByMD5" resultType="int">
+        select id from file_data_info where md5 = #{md5}
+    </select>
+
+    <insert id="insert" parameterType="com.cq.entity.FileDataInfo">
+        insert into file_data_info (meta_id, `name`, `order`, size, md5,
+         version, data_1, version_1, data_2, version_2, data_3, version_3)
+        values (#{metaId}, #{name}, #{order}, #{size}, #{md5},
+                #{version}, #{data1}, #{version1}, #{data2}, #{version2}, #{data3}, #{version3})
+    </insert>
+
+    <select id="getIdByMetaId" resultType="int">
+        select id from file_data_info where meta_id = #{metaId} and `status` = 0
+    </select>
+
+    <select id="selectNameById" resultType="String">
+        select name from file_data_info where id = #{id} and `status` = 0
+    </select>
+
+    <select id="selectMd5ById" resultType="String">
+        select md5 from file_data_info where id = #{id} and `status` = 0
+    </select>
+
+    <select id="selectIdByMetaId" resultType="int">
+        select id from file_data_info where meta_id = #{metaId} and `status` = 0
+    </select>
+
+    <update id="updateStatusById">
+        update file_data_info set `status` = 1 where id = #{id} and `status` = 0
+    </update>
+
+    <select id="selectMetaIdById" resultType="int">
+        select meta_id from file_data_info where id = #{id} and `status` = 0
+    </select>
+
+    <select id="selectNameByMetaId" resultType="String">
+        select name from file_data_info where meta_id = #{metaId} and `status` = 0
+    </select>
+
+</mapper>

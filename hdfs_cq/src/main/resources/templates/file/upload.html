@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+<div>
+    <!--<form th:action="@{/springUpload}" method="post" enctype="multipart/form-data">
+        上传的文件：<input type="file" name="FilePath">
+        <button type="submit">提交</button>
+    </form>-->
+
+    <div>
+        <form th:action="@{/file/upload}" method="post" enctype="multipart/form-data">
+            上传文件：<input type="file" name="multipartFile"><br>
+            （请手动输入路径最后一个数字）：<input type="text" name="parentId"><br>
+            <input type="submit" value="提交"><br>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

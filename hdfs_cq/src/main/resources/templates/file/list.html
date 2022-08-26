@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件列表</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<button>上传文件</button>
+<button>新建文件夹</button>
+    <h2>文件列表</h2>
+    <table>
+        <tr>
+            <th>名称</th>
+            <th>类型</th>
+            <th>删除</th>
+            <th>重命名</th>
+            <th>下载/跳转</th>
+        </tr>
+        <tr th:each="map:${filePaths}">
+            <td th:value="${map.filePath.name}"></td>
+            <td th:value="${map.filePath.type == 1 ? '文件' : '文件夹'}"></td>
+            <td name="rename"><a id="" href="">重命名</a></td>
+            <td></td>
+
+        </tr>
+    </table>
+
+</body>
+</html>

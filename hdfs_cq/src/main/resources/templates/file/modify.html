@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件重命名</title>
+</head>
+<body>
+    <div>
+        <form th:action="@{/fileDir/modify}" method="post">
+            新名称：<input type="text" name="newName"><br>
+            旧名称：<input type="text" name="oldName"><br>
+            （请手动输入路径最后一个数字）：<input type="text" name="parentId"><br>
+            <button type="submit">提交</button>
+        </form>
+    </div>
+</body>
+</html>

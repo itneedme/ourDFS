@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建文件夹</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/fileDir/add}" method="post">
+        请输入新建的文件夹名称：<input type="text" name="name"><br>
+        （请手动输入路径最后一个数字）: <input type="text" name="parentId"><br>
+        <input type="submit" value="提交"><br>
+    </form>
+</div>
+</body>
+</html>

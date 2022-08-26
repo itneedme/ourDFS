@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.dao.DataInfoMapper">
+
+    <insert id="insert" parameterType="com.cq.entity.DataInfo">
+        INSERT INTO data_info (data_id, data_node_id, name, md5, size)
+        VALUES (#{dataId}, #{dataNodeId}, #{name}, #{md5}, #{size})
+    </insert>
+
+    <select id="selectDataNodeIdByMd5" resultType="int">
+        select data_node_id from data_info where md5 = #{md5}
+    </select>
+
+    <select id="selectByDataId" resultType="com.cq.entity.DataInfo">
+        select id, data_id, data_node_id, name from data_info where data_id = #{dataId} and `status` = 0
+    </select>
+
+    <update id="updateStatusById">
+        update data_info set `status` = 1 where id = #{id} and `status` = 0
+    </update>
+
+    <select id="selectMaxSizeByDataNodeId" resultType="com.cq.entity.DataInfo">
+        select id, data_id, `name`, `size` from data_info where data_node_id = #{dataNodeId} and `status` = 0
+        order by `size` desc limit 1
+    </select>
+
+    <update id="updateDataNodeIdByIdAndDataId">
+        update data_info set data_node_id = #{newDataNodeId} where id = #{id}
+        and data_id = #{dataId} and `status` = 0
+    </update>
+
+</mapper>

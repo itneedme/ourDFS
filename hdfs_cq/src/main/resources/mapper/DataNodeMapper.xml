@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.dao.DataNodeMapper">
+
+    <select id="selectById" resultType="com.cq.entity.DataNode">
+        select id, `name`, free_space, all_space from data_node where id = #{id} and status = 0
+    </select>
+
+    <update id="updateFreeSpaceById" parameterType="com.cq.entity.DataNode">
+        update data_node set free_space = #{freeSpace} where id = #{id} and status = 0
+    </update>
+
+    <select id="selectAllSpaces" resultType="com.cq.entity.DataNode">
+        select id, free_space, all_space from data_node where status = 0;
+    </select>
+
+    <select id="selectNameById" resultType="String">
+        select name from data_node where `status` = 0 and id = #{id}
+    </select>
+
+    <select id="selectAllSpaceById" resultType="int">
+        select all_space from data_node where id = #{id} and `status` = 0
+    </select>
+
+    <select id="selectFreeSpaceById" resultType="int">
+        select free_space from data_node where id = #{id} and `status` = 0
+    </select>
+
+</mapper>

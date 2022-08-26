@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分布式文件系统演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #fullFunc {
+            width: 300px;
+            height: 40px;
+            margin: 0 auto;
+            margin-top: 100px;
+            text-align: center;
+        }
+        #fullFunc button{
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        #title {
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 884px;
+            height: 40px;
+            border: 1px solid black;
+        }
+
+        #title li {
+            float: left;
+            width: 220px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            list-style-type: none;
+            font-weight: bold;
+            border-right: 1px solid black;
+        }
+
+        .data {
+            width: 884px;
+            height: 40px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        .data li {
+            float: left;
+            width: 220px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            list-style-type: none;
+            border-right: 1px solid #ccc;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="fullFunc">
+    <a th:href="@{'/file/upload/' + ${nullValue}}">上传文件</a>
+    <a th:href="@{'/fileDir/add/' + ${nullValue}}">新建文件夹</a>
+</div>
+
+<ul id="title">
+    <li>文件名</li>
+    <li>类型</li>
+    <li>上传时间</li>
+    <li>功能</li>
+</ul>
+<span th:text="${uploadFileMsg}"></span>
+<span th:text="${addDirErrorMsg}"></span>
+<span th:text="${changeDirErrorMsg}"></span>
+<span th:text="${changeDirMsg}"></span>
+<span th:text="${deleteDirErrorMsg}"></span>
+<span th:text="${deleteDirMsg}"></span>
+<span th:text="${addDirMsg}"></span>
+</body>
+</html>
